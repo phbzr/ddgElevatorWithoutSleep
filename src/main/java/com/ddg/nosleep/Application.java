@@ -17,11 +17,7 @@ import org.springframework.context.annotation.Bean;
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        //ConfigurableApplicationContext context =
          SpringApplication.run(Application.class, args);
-//        ElevatorDestination elD = context.getBean(ElevatorDestination.class);
-//        context.getBean(ElevatorControlPanel.class).addDestination(elD.getWaiters());
-
     }
 
     @Bean

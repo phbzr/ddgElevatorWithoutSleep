@@ -16,9 +16,9 @@
 <button id="button6" onclick="floorNumb6()">6 Этаж.</button>
 <button id="button7" onclick="floorNumb7()">7 Этаж.</button>
 <button id="launcher" onclick="launcher()">Запуск.</button>
-<div id="alert">
-    <h2>Лифт прибыл на этаж!</h2>
-</div>
+
+    <h3>Подробную информацию по передвижению лифта можно посмотреть в консоли браузера.</h3>
+
 <script type="text/javascript">
     var floorNumber;
 
@@ -31,45 +31,35 @@
             data: JSON.stringify({
                 message: '124',
                 id: 124
-            })
+            }),
+            success: function (data) {
+              lightStarter();
+            }
         });
 
     }
 
     function lightStarter() {
         $.ajax({
-            url: '/api/light',
+            url: '/api/state',
             datatype: 'json',
             type: "post",
             contentType: "application/json",
             data: JSON.stringify({
                 message: '900',
                 id: 900,
-                exitStatus: 900
+                textResponse: '111'
             }),
             success: function (data) {
+                console.log(data.textResponse);
                 floorNumber = data.message;
-                var exitNotify = data.exitStatus;
                 light();
-                if(exitNotify === '500'){
-                    greenLight()}
-                else {
-                    redLight()
-                }
             }
         });
     }
 
 
-    setInterval(lightStarter, 100);
-
-    function redLight() {
-        document.getElementById("alert").style.display = "none";
-    }
-
-    function greenLight() {
-        document.getElementById("alert").style.display = "block";
-    }
+    //setInterval(lightStarter, 100);
 
     function light() {
 

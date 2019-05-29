@@ -41,10 +41,11 @@ public class RestControllerClass {
         Отдаем текущий этаж
         и статус остановки
     */
-    @PostMapping("/api/light")
+    @PostMapping("/api/state")
     public ResponseEntity<ElevatorState> currentFloorStatus() {
         elevatorState.setMessage("");
-        elevatorState.setExitStatus(elevatorStatus.getChecker());
+        elevatorState.setTextResponse(elevatorStatus.getElevatorStatus().toString());
+        elevatorStatus.setElevatorStatus(new StringBuilder());
         return new ResponseEntity<>(elevatorState, HttpStatus.OK);
     }
 
@@ -52,5 +53,4 @@ public class RestControllerClass {
     public void getStarted(){
         elevatorControlPanel.addDestination(elevatorDestination.getWaiters());
     }
-
 }

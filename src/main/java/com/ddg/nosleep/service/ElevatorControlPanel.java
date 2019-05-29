@@ -67,25 +67,15 @@ public class ElevatorControlPanel {
             }
             elevatorMoving.work();
         }
-
+         /*
+        Если в очереди есть элементы продолжаем работу,
+         если нет очищаем времянной интервал
+        */
         if (queue.size()!=0){
             addDestination(queue);
         }else {
             tripTime.getTripTime().set(0);
         }
 
-        /*
-        ждем появления элементов в очереди
-        */
-//        synchronized (lock) {
-//            if (queue.size() == 0) {
-//                try {
-//                    lock.wait();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            addDestination(queue);
-//        }
     }
 }

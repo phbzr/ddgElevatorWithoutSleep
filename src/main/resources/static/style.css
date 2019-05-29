@@ -22,7 +22,6 @@ button {
     box-shadow: 0 8px 15px rgba(0,0,0,.1);
     transition: .3s;;
 }
-
 h2 {
     text-transform: uppercase;
     font-family: "Paytone One";
@@ -31,8 +30,15 @@ h2 {
     line-height: 80px;
     color: #05b069;
     text-shadow: 0 8px 10px #c4b59d, 0 0px 0px #fff;
-    letter-spacing: -4px;
+    letter-spacing: 2px;
 }
-#alert{
-    display: none;
+h3 {
+    text-transform: uppercase;
+    font-family: "Paytone One";
+    display: block;
+    margin: 11px 0 17px 0;
+    line-height: 80px;
+    color: #05b069;
+    text-shadow: 0 8px 10px #c4b59d, 0 0px 0px #fff;
+    letter-spacing: 0px;
 }

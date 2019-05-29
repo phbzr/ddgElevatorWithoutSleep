@@ -53,10 +53,9 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
-
+                elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
                 System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
                 tripTime.getTripTime().getAndAdd(10);
-               // TimeUnit.SECONDS.sleep(10);//Движение между этажами
                 //берем текущий этаж уменьшаем и сетаем в текущий этаж
                 int x = elevator.getCurrentFloor();
                 x--;
@@ -85,10 +84,9 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
-
+                elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
                 System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
                 tripTime.getTripTime().getAndAdd(10);
-               // TimeUnit.SECONDS.sleep(10);//Движение между этажами
                 //берем текущий этаж увеличиваем и сетаем в текущий этаж
                 int x = elevator.getCurrentFloor();
                 x++;
@@ -109,11 +107,9 @@ public class ElevatorMoving {
     }
     //вызываем оповещения
     public void exitSender() throws InterruptedException {
-        elevatorStatus.setChecker("500");
         tripTime.getTripTime().getAndAdd(2);
+        elevatorStatus.getElevatorStatus().append("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды" + "\n");
         System.out.println("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды");
-     //   TimeUnit.SECONDS.sleep(4);
-        elevatorStatus.setChecker("300");
         tripTime.getTripTime().getAndAdd(2);
     }
 

@@ -6,9 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ElevatorState {
     @Autowired
     private Elevator elevator;
-
+    private String textResponse;
     private String message;
-    private String exitStatus;
+
+    public String getTextResponse() {
+        return textResponse;
+    }
+    public void setTextResponse(String textResponse) {
+        this.textResponse = textResponse;
+    }
 
     public String getMessage() {
         return message;
@@ -18,11 +24,4 @@ public class ElevatorState {
         this.message = Integer.toString(elevator.getCurrentFloor());
     }
 
-    public String getExitStatus() {
-        return exitStatus;
-    }
-
-    public void setExitStatus(String exitStatus) {
-        this.exitStatus = exitStatus;
-    }
 }
