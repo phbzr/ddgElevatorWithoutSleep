@@ -1,0 +1,249 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<header>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</header>
+<body onload="lightStarter()">
+<h2>Выберите этаж...</h2>
+<button id="button1" onclick="floorNumb1()">1 Этаж.</button>
+<button id="button2" onclick="floorNumb2()">2 Этаж.</button>
+<button id="button3" onclick="floorNumb3()">3 Этаж.</button>
+<button id="button4" onclick="floorNumb4()">4 Этаж.</button>
+<button id="button5" onclick="floorNumb5()">5 Этаж.</button>
+<button id="button6" onclick="floorNumb6()">6 Этаж.</button>
+<button id="button7" onclick="floorNumb7()">7 Этаж.</button>
+<button id="launcher" onclick="launcher()">Запуск.</button>
+<div id="alert">
+    <h2>Лифт прибыл на этаж!</h2>
+</div>
+<script type="text/javascript">
+    var floorNumber;
+
+    function launcher() {
+        $.ajax({
+            url: '/api/launcher',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '124',
+                id: 124
+            })
+        });
+
+    }
+
+    function lightStarter() {
+        $.ajax({
+            url: '/api/light',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '900',
+                id: 900,
+                exitStatus: 900
+            }),
+            success: function (data) {
+                floorNumber = data.message;
+                var exitNotify = data.exitStatus;
+                light();
+                if(exitNotify === '500'){
+                    greenLight()}
+                else {
+                    redLight()
+                }
+            }
+        });
+    }
+
+
+    setInterval(lightStarter, 100);
+
+    function redLight() {
+        document.getElementById("alert").style.display = "none";
+    }
+
+    function greenLight() {
+        document.getElementById("alert").style.display = "block";
+    }
+
+    function light() {
+
+        if (floorNumber === '1') {
+            document.getElementById('button1').style.background = "#2EE59D";
+            document.getElementById('button1').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button1').style.color = "white";
+            document.getElementById('button1').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button1').style.background = "white";
+            document.getElementById('button1').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button1').style.color = "#524f4e";
+            document.getElementById('button1').style.transform = "none";
+        }
+        if (floorNumber === '2') {
+            document.getElementById('button2').style.background = "#2EE59D";
+            document.getElementById('button2').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button2').style.color = "white";
+            document.getElementById('button2').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button2').style.background = "white";
+            document.getElementById('button2').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button2').style.color = "#524f4e";
+            document.getElementById('button2').style.transform = "none";
+        }
+        if (floorNumber === '3') {
+            document.getElementById('button3').style.background = "#2EE59D";
+            document.getElementById('button3').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button3').style.color = "white";
+            document.getElementById('button3').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button3').style.background = "white";
+            document.getElementById('button3').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button3').style.color = "#524f4e";
+            document.getElementById('button3').style.transform = "none";
+        }
+        if (floorNumber === '4') {
+            document.getElementById('button4').style.background = "#2EE59D";
+            document.getElementById('button4').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button4').style.color = "white";
+            document.getElementById('button4').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button4').style.background = "white";
+            document.getElementById('button4').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button4').style.color = "#524f4e";
+            document.getElementById('button4').style.transform = "none";
+        }
+        if (floorNumber === '5') {
+            document.getElementById('button5').style.background = "#2EE59D";
+            document.getElementById('button5').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button5').style.color = "white";
+            document.getElementById('button5').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button5').style.background = "white";
+            document.getElementById('button5').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button5').style.color = "#524f4e";
+            document.getElementById('button5').style.transform = "none";
+        }
+        if (floorNumber === '6') {
+            document.getElementById('button6').style.background = "#2EE59D";
+            document.getElementById('button6').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button6').style.color = "white";
+            document.getElementById('button6').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button6').style.background = "white";
+            document.getElementById('button6').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button6').style.color = "#524f4e";
+            document.getElementById('button6').style.transform = "none";
+        }
+        if (floorNumber === '7') {
+            document.getElementById('button7').style.background = "#2EE59D";
+            document.getElementById('button7').style.boxShadow = "0 15px 20px rgba(46,229,157,.4)";
+            document.getElementById('button7').style.color = "white";
+            document.getElementById('button7').style.transform = " translateY(-7px)";
+        } else {
+            document.getElementById('button7').style.background = "white";
+            document.getElementById('button7').style.boxShadow = "0 8px 15px rgba(0,0,0,.1)";
+            document.getElementById('button7').style.color = "#524f4e";
+            document.getElementById('button7').style.transform = "none";
+
+        }
+
+    }
+
+    function floorNumb1() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '1',
+                id: 1
+            })
+        });
+    }
+
+    function floorNumb2() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '2',
+                id: 2
+            })
+        });
+    }
+
+    function floorNumb3() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '3',
+                id: 3
+            })
+        });
+    }
+
+    function floorNumb4() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '4',
+                id: 4
+            })
+        });
+    }
+
+    function floorNumb5() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '5',
+                id: 5
+            })
+        });
+    }
+
+    function floorNumb6() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '6',
+                id: 6
+            })
+        });
+    }
+
+    function floorNumb7() {
+        $.ajax({
+            url: '/api/destination',
+            datatype: 'json',
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify({
+                message: '7',
+                id: 7
+            })
+        });
+    }
+</script>
+</body>
+</html>
