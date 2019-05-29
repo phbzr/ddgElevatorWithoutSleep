@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ElevatorState {
     @Autowired
     private Elevator elevator;
+
     private String textResponse;
     private String message;
 
     public String getTextResponse() {
         return textResponse;
     }
+
     public void setTextResponse(String textResponse) {
         this.textResponse = textResponse;
     }

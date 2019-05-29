@@ -33,7 +33,6 @@ public class ElevatorMoving {
             while (elevatorControlPanel.getLocalUp().size() > 0) {
                 elevatorUp(elevatorControlPanel.getLocalUp());
             }
-
         } else if (elevator.getCurrentFloor() > 1 && elevatorControlPanel.getLocalDown().size() > 0) {
             //Не даем уйти в другой метод , пока не опустошим список
             while (elevatorControlPanel.getLocalDown().size() > 0) {
@@ -53,6 +52,7 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
+                //Объявления в две консоли
                 elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
                 System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
                 tripTime.getTripTime().getAndAdd(10);
@@ -84,8 +84,10 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
+                //Объявления в две консоли
                 elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
                 System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
+                //проходим этаж
                 tripTime.getTripTime().getAndAdd(10);
                 //берем текущий этаж увеличиваем и сетаем в текущий этаж
                 int x = elevator.getCurrentFloor();
@@ -107,9 +109,12 @@ public class ElevatorMoving {
     }
     //вызываем оповещения
     public void exitSender() throws InterruptedException {
+        //открытие дверей
         tripTime.getTripTime().getAndAdd(2);
+        //Объявления в две консоли
         elevatorStatus.getElevatorStatus().append("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды" + "\n");
         System.out.println("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды");
+        //закрытие дверей
         tripTime.getTripTime().getAndAdd(2);
     }
 

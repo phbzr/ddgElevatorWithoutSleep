@@ -30,12 +30,7 @@ public class RestControllerClass {
     */
     @PostMapping("/api/destination")
     public void getDestination(@RequestBody ResponseObject object) {
-
         elevatorDestination.getWaiters().add(object.getId());
-        synchronized (elevatorControlPanel.getLock()) {
-            elevatorControlPanel.getLock().notify();
-        }
-        System.out.println(elevatorDestination.getWaiters());
     }
     /*
         Отдаем текущий этаж

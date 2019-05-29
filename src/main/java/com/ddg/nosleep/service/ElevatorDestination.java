@@ -17,5 +17,4 @@ public class ElevatorDestination {
         this.waiters = waiters;
     }
 
-
 }
