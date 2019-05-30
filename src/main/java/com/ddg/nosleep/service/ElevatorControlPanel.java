@@ -14,7 +14,7 @@ public class ElevatorControlPanel {
     private TripTime tripTime;
 
     private int min = 500;
-    private int tmp = 0;
+    private int tmpFloor = 0;
     private int dest = -1; //конечная точка
     private TreeSet<Integer> localUp = new TreeSet<>(); //очередь вверх
     private TreeSet<Integer> localDown = new TreeSet<>();// очередь вниз
@@ -45,18 +45,19 @@ public class ElevatorControlPanel {
     public void addDestination(TreeSet<Integer> queue) {
         /*
         Если очередь не пустая добавляем пункт назначаения с первого элемента в очереди
-        Перебираем элементы в очереди, устанавливаем пункт назначени ближайший к текущему этажу
+        Перебираем элементы в очереди, устанавливаем направление по ближайшему к текущему этажу
+        В большинстве вариантов дает оптимальный маршрут, в остальных же является фитчей данной модели. =)
         */
         if (queue.size() > 0) {
         for (int oneOf : queue){
-            int mex = Math.abs(elevator.getCurrentFloor() - oneOf);
-            if (mex < min){
-                min = mex;
-                tmp = oneOf;
+            int tmp = Math.abs(elevator.getCurrentFloor() - oneOf);
+            if (tmp < min){
+                min = tmp;
+                tmpFloor = oneOf;
             }
         }
-            dest = tmp;
-            queue.remove(tmp);
+            dest = tmpFloor;
+            queue.remove(tmpFloor);
         }
          /*
         проверяем пункт назначения(1-7 этаж)
@@ -81,7 +82,7 @@ public class ElevatorControlPanel {
         if (queue.size()!=0){
             addDestination(queue);
         }else {
-            tripTime.getTripTime().set(0);
+            tripTime.getTripTime().set(2);
         }
 
     }

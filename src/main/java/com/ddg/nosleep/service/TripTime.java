@@ -3,7 +3,7 @@ package com.ddg.nosleep.service;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TripTime {
-    private AtomicInteger tripTime = new AtomicInteger(0);
+    private AtomicInteger tripTime = new AtomicInteger(2);
 
     public AtomicInteger getTripTime() {
         return tripTime;
