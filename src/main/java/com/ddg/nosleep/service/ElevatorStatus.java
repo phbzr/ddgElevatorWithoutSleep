@@ -1,4 +1,4 @@
-package com.ddg.nosleep.domain;
+package com.ddg.nosleep.service;
 
 public class ElevatorStatus {
     private StringBuilder elevatorStatus = new StringBuilder();

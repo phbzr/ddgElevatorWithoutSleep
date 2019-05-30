@@ -2,8 +2,8 @@ package com.ddg.nosleep.controller;
 
 import com.ddg.nosleep.service.ElevatorDestination;
 import com.ddg.nosleep.service.ElevatorControlPanel;
-import com.ddg.nosleep.domain.ElevatorStatus;
-import com.ddg.nosleep.service.ElevatorState;
+import com.ddg.nosleep.service.ElevatorStatus;
+import com.ddg.nosleep.domain.ElevatorState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

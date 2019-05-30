@@ -1,11 +1,11 @@
 package com.ddg.nosleep;
 
-import com.ddg.nosleep.domain.ElevatorStatus;
+import com.ddg.nosleep.service.ElevatorStatus;
 import com.ddg.nosleep.service.TripTime;
 import com.ddg.nosleep.service.ElevatorControlPanel;
 import com.ddg.nosleep.service.ElevatorDestination;
 import com.ddg.nosleep.service.ElevatorMoving;
-import com.ddg.nosleep.service.ElevatorState;
+import com.ddg.nosleep.domain.ElevatorState;
 import com.ddg.nosleep.model.Elevator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

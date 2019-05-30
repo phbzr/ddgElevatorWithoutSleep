@@ -1,4 +1,4 @@
-package com.ddg.nosleep.service;
+package com.ddg.nosleep.domain;
 
 import com.ddg.nosleep.model.Elevator;
 import org.springframework.beans.factory.annotation.Autowired;

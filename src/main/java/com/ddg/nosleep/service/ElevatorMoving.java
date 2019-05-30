@@ -1,6 +1,5 @@
 package com.ddg.nosleep.service;
 
-import com.ddg.nosleep.domain.ElevatorStatus;
 import com.ddg.nosleep.model.Elevator;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.TreeSet;
@@ -52,10 +51,8 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
-                //Объявления в две консоли
-                elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
-                System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
-                tripTime.getTripTime().getAndAdd(10);
+                //Объявления в две консоли увеличиваем время
+                floorMoving();
                 //берем текущий этаж уменьшаем и сетаем в текущий этаж
                 int x = elevator.getCurrentFloor();
                 x--;
@@ -69,6 +66,7 @@ public class ElevatorMoving {
             elevator.setCurrentFloor(elevator.getCurrentFloor());
             exitSender();
             local.pollLast();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -84,11 +82,8 @@ public class ElevatorMoving {
                     exitSender();
                     elevatorDestination.getWaiters().remove(elevator.getCurrentFloor());
                 }
-                //Объявления в две консоли
-                elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
-                System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
-                //проходим этаж
-                tripTime.getTripTime().getAndAdd(10);
+                //Объявления в две консоли увеличиваем время
+                floorMoving();
                 //берем текущий этаж увеличиваем и сетаем в текущий этаж
                 int x = elevator.getCurrentFloor();
                 x++;
@@ -103,16 +98,23 @@ public class ElevatorMoving {
             elevator.setCurrentFloor(elevator.getCurrentFloor());
             exitSender();
             local.pollFirst();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
     //вызываем оповещения
+    public void floorMoving(){
+        elevatorStatus.getElevatorStatus().append("Текущий этаж: " + elevator.getCurrentFloor() + "\n");
+        System.out.println("Текущий этаж: " + elevator.getCurrentFloor());
+        tripTime.getTripTime().getAndAdd(10);
+    }
+
     public void exitSender() throws InterruptedException {
         //открытие дверей
         tripTime.getTripTime().getAndAdd(2);
         //Объявления в две консоли
-        elevatorStatus.getElevatorStatus().append("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды" + "\n");
+        elevatorStatus.getElevatorStatus().append("Прибыли на " + elevator.getCurrentFloor() + " этаж. Общее время в пути " + tripTime.getTripTime() + " секунды" + "\n");
         System.out.println("Прибыли на " + elevator.getCurrentFloor() + " этаж. Время в пути " + tripTime.getTripTime() + " секунды");
         //закрытие дверей
         tripTime.getTripTime().getAndAdd(2);
